@@ -1,0 +1,242 @@
+<?php
+/**
+ * TRIP PLANNER Custom Module
+ */
+if (!defined('TRIP_PLANNER_CLASSES_PATH')) {
+    define('TRIP_PLANNER_CLASSES_PATH', './' . drupal_get_path('module', 'tripplanner') . "/classes/");
+}
+if (!defined('TRIP_PLANNER__VIEWS_PATH')) {
+    define('TRIP_PLANNER_VIEWS_PATH', './' . drupal_get_path('module', 'tripplanner') . "/views/");
+}
+if (!defined('TRIP_PLANNER__CSS_PATH')) {
+    define('TRIP_PLANNER_CSS_PATH', drupal_get_path('module', 'tripplanner') . "/css/");
+}
+if (!defined('TRIP_PLANNER__JS_PATH')) {
+    define('TRIP_PLANNER_JS_PATH', drupal_get_path('module', 'tripplanner') . "/js/");
+}
+
+require_once(TRIP_PLANNER_CLASSES_PATH . "SaveTripDAO.php");
+require_once(TRIP_PLANNER_CLASSES_PATH . "GetFavoriteTripData.php");
+
+/**
+ * Implements hook_help.
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+function tripplanner_help($path, $arg) {
+    switch ($path) {
+        case "admin/help#tripplanner":
+            return '<p>' . t("Help For Trip Planner") . '</p>';
+            break;
+    }
+}
+
+/**
+ * Menu hook.
+ *
+ * Display the menu for the trip planner
+ *
+ */
+function tripplanner_menu() {
+
+    $items = array();
+
+    $items['tripplanner'] = array(
+        'title' => t('Trip Planner'),
+        'page callback' => 'tripplanner_output',
+        'access arguments' => array('access content'),
+        'access callback' => TRUE
+    );
+
+    $items['tripplanner/save_trip'] = array(
+        'title' => '', //Save Trip
+        'page callback' => 'tripplanner_save_trip_as_favorite_ajax',
+        'access callback' => TRUE,
+        'expanded' => TRUE
+    );
+
+    $items['tripplanner/get_trip'] = array(
+        'title' => '', //Convert Time
+        'page callback' => 'get_trip_in_session_ajax',
+        'access callback' => TRUE,
+        'expanded' => TRUE
+    );
+
+    return $items;
+}
+
+/*
+* Display output
+*/
+function tripplanner_output() {
+    global $user;
+
+    //$tripId = arg(1);
+    if (!empty($_GET['from'])) {
+
+        /*echo '<pre>';
+        print_r($_GET);exit;*/
+       $date = (!empty($_GET['dt'])) ? $_GET['dt'] : date('m-d-Y');
+       $requiredDateFormat = get_required_date_format($date);
+
+       if(empty($_GET['title'])){
+           $userData = array(
+               'id' => '',
+               'uid' => $user->uid,
+               'title' => $_GET['title'],
+               'from_location' => $_GET['from'],
+               'to_location' => $_GET['to'],
+               'date_of_travel' => $date,
+               'depart_hour' => $_GET['hr'],
+               'time_format' => $_GET['thfrmt'],
+               'mode_of_transit' => 'TRANSIT',
+               'schedule_type' => $_GET['schdl'],
+               'required_date_format' => $requiredDateFormat,
+           );
+       } else {
+           $userData = array(
+               'id' => '',
+               'uid' => $user->uid,
+               'title' => $_GET['title'],
+               'from_location' => $_GET['from'],
+               'to_location' => $_GET['to'],
+               'date_of_travel' => $date,
+               'depart_hour' => $_GET['hr'],
+               'time_format' => $_GET['thfrmt'],
+               'mode_of_transit' => 'TRANSIT',
+               'schedule_type' => $_GET['schdl'],
+               'required_date_format' => $requiredDateFormat,
+           );
+       }
+
+    } else {
+
+        $userData = array(
+            'id' => '',
+            'uid' => $user->uid,
+            'title' => '',
+            'from_location' => '',
+            'to_location' => '',
+            'date_of_travel' => '',
+            'depart_hour' => '',
+            'depart_minute' => '',
+            'time_format' => '',
+            'mode_of_transit' => '',
+            'schedule_type' => '',
+            'required_date_format' => '',
+        );
+    }
+    /*echo "<pre>";
+    print_r($userData);exit;*/
+      $page = array(
+        '#type' => 'markup',
+        '#markup' => tripplanner_render_view(TRIP_PLANNER_VIEWS_PATH . "/trip_planner.php", $userData)
+    );
+
+    return $page;
+}
+
+/*
+* Renders a view and returns HTML
+*/
+function tripplanner_render_view($view_filepath, $userData) {
+    //tta_add_css();
+    //tta_add_js();
+
+    ob_start();
+    include $view_filepath;
+    $markup = ob_get_contents();
+    ob_end_clean();
+
+    return $markup;
+}
+
+function tripplanner_permission() {
+    return array(
+        'access tripplanner' => array(
+            'title' => t('Access Trip Planner'),
+            'description' => t('View and use the tripplanner module.')
+        ),
+    );
+}
+
+function tripplanner_save_trip_as_favorite_ajax() {
+
+    extract($_POST);
+    global $user;
+    $uid = $user->uid;
+
+    $save_trip_dao = new SaveTripDAO();
+
+    $from_location_slug = $save_trip_dao->createSlug($from_location, '_');
+    $to_location_slug = $save_trip_dao->createSlug($to_location, '_');
+
+    $num_of_results = $save_trip_dao->checkTripExists($uid, $from_location_slug, $to_location_slug, $_POST['id'], $_POST['title']);
+
+    if (!$num_of_results) {
+        #save to favorites
+        $_POST['from_location_slug'] = $from_location_slug;
+        $_POST['to_location_slug'] = $to_location_slug;
+
+
+        if (!empty($_POST['id'])) {
+            //print_r($_POST);exit;
+            $result = $save_trip_dao->updateTrip($_POST);
+        } else {
+
+            $result = $save_trip_dao->saveTrip($_POST);
+        }
+        if ($result == true) {
+            return drupal_json_output(array('status' => 1,
+                'message' => 'Trip saved successfully'));
+        } else {
+            return drupal_json_output(array('status' => 0,
+                'message' => 'Sorry, there is some error, please try after some time'));
+        }
+
+    } else {
+        return drupal_json_output(array('status' => 0,
+            'message' =>'Trip could not be saved. The trip name or location details found similar to previous trip.'
+            //'message' => 'Trip could not be saved due to following reason.| 1.The trip name is found similar to another trip.|2.The locations are found similar to another trip.|3.Some error has occurred.|Please check and try agian.'
+        ));
+
+    }
+
+}
+
+
+function get_trip_in_session_ajax() {
+    $sessionKey = "tripPlannerData";
+    /*echo "<pre>";
+    print_r($_POST);exit;*/
+    $sessionData = add_session($sessionKey, $_POST);
+
+    return drupal_json_output($sessionKey);
+
+}
+
+
+function add_session($key, $value = NULL) {
+    static $storage;
+
+    if ($value) {
+        $storage[$key] = $value;
+        $_SESSION['trip'][$key] = $value; // I put 'trip' in case some other module uses 'type' in $_SESSION
+    } else if (empty($storage[$key]) && isset($_SESSION['trip'][$key])) {
+        $storage[$key] = $_SESSION['trip'][$key];
+    }
+    return $storage[$key];
+
+}
+
+function get_required_date_format($date){
+
+    $newDate = explode('-', $date);
+    return $newDate[0].'/'.$newDate[1].'/'.$newDate[2];
+}
+

@@ -1,0 +1,60 @@
+/* lightbox */
+.lightBoxWrap{
+    margin: 0 auto;
+    max-width: 695px;
+    border: 1px solid #c2c2c2;
+}
+.stopNameWrap{
+    margin: 0 0 30px;
+    padding: 5px 5px 11px;
+    background: url("../images/stopBtmShadow.png") no-repeat center bottom;
+}
+.stopName{
+    padding: 15px 12px;
+    font-size: 14px;
+    color: #000000;
+    background: #f8fbf5;
+}
+.stopName b{
+    display: block;
+    font-size: 16px;
+}
+.stopsListWrap{
+    padding: 0 18px 15px;
+    color: #000000;
+}
+.stopsListWrap p{
+    margin: 0 0 25px;
+    padding: 0 0 10px;
+    font-weight: normal;
+    border-bottom: 1px solid #78b94c;
+}
+.stopsListWrap li{
+    margin: 15px 0 0;
+    padding: 15px 0 0;
+    border-top: 1px solid #c6c6c6;
+    overflow: hidden;
+}
+.stopsListWrap li:first-child{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.stopsListWrap li span{
+    float: left;
+    padding: 4px 0 0;
+}
+.stopsListWrap li .blueBtn{
+    float: right;
+    margin: 0;
+    padding: 0 5px;
+    width: 136px;
+    height: 25px;
+    line-height: 24px;
+    text-align: center;
+}
+.closeIcon{
+    width: 50px;
+    height: 51px;
+    background: url("../images/spriteImg.png") no-repeat 0 -500px;
+}

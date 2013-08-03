@@ -1,0 +1,120 @@
+/* Basic jQuery Slider essential styles */
+
+ul.bjqs {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /*overflow: hidden;*/
+    display: none;
+}
+ul.bjqs li{
+    margin: 0;
+}
+li.bjqs-slide {
+    position: absolute;
+    display: none;
+}
+
+ul.bjqs-controls {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 9999;
+}
+
+ul.bjqs-controls.v-centered li a {
+    position: absolute;
+}
+
+ul.bjqs-controls.v-centered li.bjqs-next a {
+    right: 0;
+}
+
+ul.bjqs-controls.v-centered li.bjqs-prev a {
+    left: 0;
+}
+
+ol.bjqs-markers {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+ol.bjqs-markers.h-centered {
+    text-align: center;
+}
+
+ol.bjqs-markers li {
+    display: inline;
+}
+
+ol.bjqs-markers li a {
+    display: inline-block;
+}
+
+p.bjqs-caption {
+    display: block;
+    width: 96%;
+    margin: 0;
+    padding: 2%;
+    position: absolute;
+    bottom: 0;
+}
+
+#banner-slide, li.bjqs-slide, ul.bjqs, .bjqs-wrapper {
+    min-height: 358px !important;
+}
+
+#banner-slide {
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    max-width: 1200px;
+    background: url("../images/bannerShadow.png") bottom center no-repeat;
+}
+
+.bjqs-markers.h-centered {
+    width: auto;
+    float: right;
+    margin: -72px 116px 0 0;
+    z-index: 1000;
+    left: auto !important;
+    position: relative;
+}
+.bjqs-markers.h-centered li {
+    float: left;
+    margin-right: 18px;
+}
+.bjqs-markers.h-centered li a {
+    display: block;
+    height: 21px;
+    width: 21px;
+    text-indent: -5000px;
+    background: url("../images/sliderCircles.png") no-repeat;
+}
+.bjqs-markers.h-centered li.active-marker a {
+    background-position: 0 -21px;
+}
+/*
+#content {
+    margin-top: -10px;
+}*/
+.slideshow {
+    width: 100%;
+    text-align: center;
+}
+.slideshow li {
+    width: 100%;
+    display: list-item;
+    text-align: center;
+    height: 358px;
+}
+.slideshow img {
+    margin-right: auto;
+    margin-left: auto;
+    height: 358px;
+    /*width: 100% !important;*/
+    width: 1200px;
+}

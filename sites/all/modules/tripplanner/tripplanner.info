@@ -1,0 +1,6 @@
+name = tripplanner
+description = triangle transit trip planner
+package = Custom Module for trip planner, By anand@weboniselab.com
+core = 7.x
+
+files[] = trippplanner.module

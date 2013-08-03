@@ -1,0 +1,137 @@
+.acFormRow .form-item{
+    margin: 0;
+    font-size: 13px;
+    overflow: hidden;
+}
+.acFormRow .form-item label {
+    float: left;
+    margin: 6px 20px 0 0;
+    width: 160px;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: right;
+    color: #000000;
+    cursor: text;
+}
+.acFormRow .form-item input[type="text"], .acFormRow .form-item input[type="password"] {
+    float: left;
+    margin: 0;
+    width: 280px;
+    height: 19px;
+    font-size: 13px;
+    color: #58595B;
+    border: 1px solid #A7A6A6;
+    border-radius: 5px;
+}
+
+.form-radios{
+    float: left;
+    width: 495px;
+    overflow: hidden;
+}
+.form-item-field-i-agree-to-the-und .form-required,
+.editProfile .field-name-field-i-agree-to-the{
+    display: none;
+}
+.acFormRow .form-radios div{
+    float: left;
+    padding: 13px 0 0;
+    width: 75px;
+}
+.acFormRow .form-radios div label, .acFormRow input[type="checkbox"]+label{
+    float: none;
+    width: auto;
+}
+.acFormRow .form-radios div input[type="radio"]{
+    margin: -3px 0 0 2px;
+}
+.acFormRow .form-item select{
+    margin: 2px 0 0;
+    padding: 4px;
+    width: 294px;
+    height: 29px;
+    font-size: 13px;
+    color:#58595B;
+    border: 1px solid #A7A6A6;
+    border-radius: 5px;
+    background: #ffffff;
+    filter: none;
+    box-shadow: none;
+}
+.acFormRow .description, .acFormRow input[type="checkbox"],.acFormRow input[type="checkbox"]+label{
+    float: left;
+    margin: 0;
+}
+.acFormRow input[type="checkbox"]{
+    margin: 2px 4px 0 180px;
+    margin: 0 4px 0 180px\9;
+}
+.acFormRow .description{
+    margin: 0 0 0 3px;
+    font-size: 13px;
+}
+.acFormRow .captcha{
+    float:left;
+    padding: 0 0 10px;
+    width: 495px;
+}
+.labelBox{
+    float: left;
+    margin: 0 20px 0 0;
+    width: 160px;
+    font-size: 13px;
+    text-align: right;
+    color:#000000;
+}
+.acFormRow .whtBtn{
+    margin: 0 0 0 180px;
+    width: 100px;
+    height: 35px;
+    font-size: 15px;
+    color: #959595;
+    text-shadow: 0 1px 0 rgba(255,255,255,1);
+    border: 1px solid #a8a8a8;
+    box-shadow: none;
+}
+#user-register-form .acFormRow .whtBtn{
+    width: 160px;
+    font-family: Helvetica;
+    font-size: 14px;
+    line-height: 15px;
+}
+.acFormLarge{
+    padding: 10px 0 0;
+}
+.acFormLarge a.grayBtn{
+    margin: 5px 4px 0 20px;
+}
+.fieldBox input[type="submit"]{
+    width: 90px;
+    height: 36px;
+    display: inline-block;
+    vertical-align: top;
+}
+.acFormRow .password-strength{
+    display: none;
+}
+.acFormRow input[disabled]{
+    cursor: not-allowed;
+    background: #F0EFEF;
+}
+input[type="text"].error, .loginBox input[type="text"].error, .loginBox input[type="password"].error, .emailBox input[type="text"].error,
+.acFormRow .form-item input[type="text"].error, .acFormRow .form-item input[type="password"].error{
+    border: 2px solid #fcb034;
+}
+.field-name-field-i-agree-to-the a{
+    text-decoration: underline;
+}
+.mandotField {
+    margin-left: 180px !important;
+}
+.recaptchatable #recaptcha_response_field{
+    margin-bottom: 10px;
+}
+.acFormRow .phoneNoField{
+    margin: 0 0 9px;
+    overflow: hidden;
+}
