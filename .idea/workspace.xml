@@ -52,7 +52,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="174" selection-end="174" vertical-scroll-proportion="0.15050167">
+            <state line="16" column="19" selection-start="504" selection-end="504" vertical-scroll-proportion="0.4013378">
               <folding />
             </state>
           </provider>
@@ -76,6 +76,7 @@
         <option value="$PROJECT_DIR$/sites/default/settings.php" />
         <option value="$PROJECT_DIR$/sites/all/themes/zen/templates/page.tpl.php" />
         <option value="$PROJECT_DIR$/sites/all/themes/zen/zen.info" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -388,7 +389,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="174" selection-end="174" vertical-scroll-proportion="0.15050167">
+        <state line="16" column="19" selection-start="504" selection-end="504" vertical-scroll-proportion="0.4013378">
           <folding />
         </state>
       </provider>

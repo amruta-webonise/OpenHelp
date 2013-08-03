@@ -4,7 +4,7 @@
  * Returns the HTML for a single Drupal page while offline.
  *
  * Complete documentation for this file is available online.
- * @see http://drupal.org/node/1728174
+ * @see https://drupal.org/node/1728174
  */
 ?><!DOCTYPE html>
 <!--[if IEMobile 7]><html class="iem7" <?php print $html_attributes; ?>><![endif]-->
@@ -47,7 +47,7 @@
     <?php endif; ?>
 
     <?php if ($site_name || $site_slogan): ?>
-      <hgroup id="name-and-slogan">
+      <div id="name-and-slogan">
         <?php if ($site_name): ?>
           <h1 id="site-name">
             <a href="<?php print $base_path; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
@@ -57,7 +57,7 @@
         <?php if ($site_slogan): ?>
           <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>
-      </hgroup>
+      </div>
     <?php endif; ?>
 
     <?php print $header; ?>

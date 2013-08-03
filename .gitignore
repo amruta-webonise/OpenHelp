@@ -4,3 +4,14 @@ sites/*/settings*.php
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
+
+
+Title	title	Node module element
+
+Address of your place	field_address	Long text and summary	Text area with a summary	edit	delete
+
+Description	body	Long text and summary	Text area with a summary	edit	delete
+
+Total number of roomates allowed	field_number_of_accomodations	List (integer)	Select list	edit	delete
+
+Number of vacancies

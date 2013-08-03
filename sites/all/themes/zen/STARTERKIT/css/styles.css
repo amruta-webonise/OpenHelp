@@ -6,20 +6,17 @@
  * of these @include files will be combined into a single file.
  */
 
-/* Base rules */
+/* HTML element (SMACSS base) rules */
 @import "normalize.css";
 
 /* Layout rules */
-@import "layout-responsive.css";
+@import "layouts/responsive.css";
 
-/* Module rules */
-@import "modular-styles.css";
-/* Optionally, add your own modular stylesheets here. */
+/* Component (SMACSS module) rules */
+@import "components/misc.css";
+/* Optionally, add your own components here. */
 @import "print.css";
 
-/* Global state rules */
-@import "global-states.css";
-
-/* Theme rules */
+/* SMACSS theme rules */
 /* @import "theme-A.css"; */
 /* @import "theme-B.css"; */
