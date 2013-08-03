@@ -986,3 +986,91 @@ tr.selected td {
 .header__region {
     float: right;
 }
+
+ul.houseList {
+    padding: 0;
+    list-style: none;
+}
+ul.houseList li{
+    margin: 0 0 25px;
+    padding: 0 0 25px;
+    border-bottom: 1px solid #c6c6c6;
+}
+ul.houseList h4{
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+}
+ul.houseList .imgBox{
+    float: left;
+    margin: 0 20px 0 0;
+    width: 178px;
+    border: 1px solid #c2c2c2;
+}
+ul.houseList .houseListRht{
+    float:left;
+    width: 498px;
+}
+.houseListRht span{
+    color :#959595;
+}
+.houseListRht a, a.readMoreLink, a.backToNews{
+    display: block;
+    padding: 4px 8px 1px;
+    width: 87px;
+    height: 24px;
+    color: #ffffff;
+    border-radius: 4px;
+    background: #0066a4;
+}
+.houseListRht a span, a.readMoreLink span, a.backToNews span{
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    color: #ffffff;
+    vertical-align: bottom;
+}
+.newsDet{
+    padding-right: 20px;
+}
+.newsDet h3{
+    margin: 0 0 15px;
+    padding: 15px 0 0;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #0066a4;
+}
+.newsDet .imgBox{
+    margin: 0 0 15px;
+    padding: 0 0 15px;
+    border-bottom: 1px solid #c6c6c6;
+}
+.newsDet .imgBox img{
+    display: block;
+    margin: 0 0 20px;
+    max-width: 680px;
+}
+.newsDet .imgBox span{
+    display: block;
+    color :#959595;
+}
+.newsDet p{
+    margin: 0 0 15px;
+    color: #231f20;
+}
+p {
+    margin: 10px;
+}
+.form-item-name{
+    float: left;
+    margin: 24px;
+}
+
+.form-item-pass{
+    float: right;
+}
+.edit-actions{
+    margin: 0 0 0 185px;
+}
